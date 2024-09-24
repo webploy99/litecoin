@@ -52,7 +52,7 @@
           <h1>LiteCoin</h1>
         </div>
         <div class="flex items-center gap-8">
-          <button onclick="url()" class="bg-[#28386F] hover:bg-blue-800 text-xl font-semibold shadow px-6 py-2 rounded-full border border-blue-900">
+          <button onclick="ShowPopUp1()" class="bg-[#28386F] hover:bg-blue-800 text-xl font-semibold shadow px-6 py-2 rounded-full border border-blue-900">
             Join Group Now
           </button>
         </div>
@@ -68,17 +68,17 @@
         If you want to make yourself rich in 2024, you should calmly lear how to invest in cryptocurrencies and make high profits from them.
       </p>
 
-      <div class="grid md:grid-cols-2 gap-12 items-center py-10">
-        <div class=""><img src="./img/td2.png"></div>
+      <div class="grid md:grid-cols-2 gap-5 py-10">
+        <div class="flex justify-center items-center">
+          <video src="./img/video.mp4" loop autoplay controls autobuffer playsinline
+                  class="w-full md:w-8/12 flex justify-center items-center"></video>
+        </div>
         <div>
           <span class="text-[30px] md:text-[40px] font-[500] text-orange-200 leading-[1.1]">Investment 2024</span>
           <p class="text-lg sm:text-2xl mt-4 text-gray-100">Investing will take your wealth to the next level! If you want to grow your wealth quickly, please join our professional strategy analyst team now! You can start a free one-week trial of technical analysis! We provide exclusive resources and tools to help you successfully invest in the cryptocurrency market.
           </p>
+          <div class="mt-10"><img src="./img/td2.png"></div>
         </div>
-      </div>
-      <div class="flex flex-col justify-center items-center *:mt-5 sm:mt-10">
-        <span class="text-xl sm:text-2xl text-center font-bold text-orange-200">LiteCoin is committed to becoming a benchmark in the field of digital asset trading. Watch the video below to learn more about LiteCoin.👇👇👇</span>
-        <iframe class="w-full sm:w-8/12 aspect-video shadow-xl" src="./img/video2.mp4"></iframe>
       </div>
     </div>
   </section>
@@ -475,7 +475,7 @@
         </div>
       </div>
       <div class="flex justify-center items-center mt-10">
-        <button onclick="url()" class="bg-[#28386F] hover:bg-blue-800 text-xl text-gray-100 px-5 py-3 rounded-md">
+        <button onclick="ShowPopUp1()" class="bg-[#28386F] hover:bg-blue-800 text-xl text-gray-100 px-5 py-3 rounded-md">
           Join Group Now
         </button>
       </div>
@@ -544,11 +544,78 @@
   </footer>
   <!-- end of footer -->
 
+  <!-- Popup 1 -->
+  <div class="popup1 w-full h-screen bg-[#0a0908]/65 hidden justify-center items-center fixed top-0 left-0 p-3"
+    id="PopUp1">
+    <div class="box max-w-[668px] w-full bg-white p-6 sm:px-8 rounded-lg relative">
+      <button class="absolute top-3 right-3 text-red-600 text-2xl"><ion-icon onclick="HidePopUp()" name="close"
+          class="border border-white shadow"></ion-icon></button>
+      <div class="text-lg text-gray-700 py-5 font-[500] flex gap-1">
+        <div><ion-icon name="arrow-redo" class="text-xl text-[#fcbf49] mt-1"></ion-icon></div>
+        <p>Only for cryptocurrency investors, because our discussion cryptocurrency group is a high -end investor  share
+          group, investors who have not registered cryptocurrency wallets don't enter please</p>
+      </div>
+      <div
+        class="flex justify-between items-center tracking-wider text-lg text-white font-semibold *:text-center gap-4 *:w-full *:text-md *:py-2.5 *:rounded-lg  *:cursor-pointe">
+        <button onClick="ShowPopUp2()" class="bg-[#fdc500]">
+          Yes
+        </button>
+        <button onclick="amazonUrl()" class="bg-red-500">
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup 2 -->
+  <div class="popup2 w-full h-screen bg-[#00000056] hidden justify-center items-center fixed top-0 left-0 p-3"
+    id="PopUp2">
+    <div class="box max-w-[668px] w-full bg-white p-6 sm:px-8 rounded-lg relative">
+      <button class="absolute top-3 right-3 text-red-600 text-2xl"><ion-icon onclick="HidePopUp()" name="close"
+          class="border border-white shadow"></ion-icon></button>
+      <div class="text-lg text-gray-700 py-5 font-[500] flex gap-1">
+        <div><ion-icon name="arrow-redo" class="text-xl text-[#fcbf49] mt-1"></ion-icon></div>
+        <p>After joining the discussion group, please take the initiative to contact the assistant for free
+          cryptocurrency trading strategies and market updates</p>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center tracking-wider text-white font-semibold *:text-center gap-5 sm:gap-4 *:w-full text-lg *:py-2.5 *:rounded-lg  *:cursor-pointer">
+        <button onclick="url()" class="bg-[#fdc500]">
+          Yes, I want to join the group
+        </button>
+        <button onclick="amazonUrl()" class="bg-red-500">
+          Sorry, I'm not interested in this
+        </button>
+      </div>
+    </div>
+
   <script>
     function url() {
       fbq("track", "Purchase");
       fbq("track", "SubmitApplication");
       location.href = "https://chat.whatsapp.com/EgKw8qXKk1SHkRr2CZtHIg";
+    }
+
+    function amazonUrl() {
+        location.href = "https://www.amazon.com/";
+    }
+
+    let popup1 = document.getElementById("PopUp1");
+    let popup2 = document.getElementById("PopUp2");
+
+    function togglePopup(showPopup, hidePopup) {
+        showPopup.style.display = "flex";
+        hidePopup.style.display = "none";
+    }
+    function ShowPopUp1() {
+        togglePopup(popup1, popup2);
+    }
+    function ShowPopUp2() {
+        togglePopup(popup2, popup1);
+    }
+    function HidePopUp() {
+        popup1.style.display = "none";
+        popup2.style.display = "none";
     }
   </script>
 </body>
